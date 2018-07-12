@@ -1,0 +1,51 @@
+<div class="header text-center" routerLink="">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/SpaceX-Logo.svg/2000px-SpaceX-Logo.svg.png" alt="No img">
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+        <h2 *ngIf="detailedLaunch$">Flight # {{ detailedLaunch$.flight_number }}</h2>
+    </div>
+    <div class="col text-center">
+        <h2 *ngIf="detailedLaunch$">{{ detailedLaunch$.mission_name }}</h2>
+    </div>
+    <div class="col text-center mission-status-inline">
+        <h2 id="mission-status">Status: <span [ngStyle]="{'color': checkSuccess() === 'Successful' ? 'green' : 'red'}">{{ checkSuccess() }}</span></h2>
+    </div>
+  </div>
+   <div class="row video-details">
+    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center details">
+      <h1 class="rocket-name" *ngIf="detailedLaunch$.rocket">{{ detailedLaunch$.rocket.rocket_name }}</h1>
+
+      <p class="inner-details">
+        {{ detailedLaunch$.details }}
+      </p>
+    </div>
+      <iframe *ngIf="detailedLaunch$.links" [src]=getEmbedUrl(detailedLaunch$) width="460" height="315" frameBorder="0" class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-center">
+      </iframe>
+  </div>
+  <div class="row payload-info">
+      <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 social-media">
+
+        <div class="link text-center">
+          <p>Reddit</p>
+          <a href="{{ detailedLaunch$.links?.reddit_media }}"><i class="fab fa-reddit-square fa-3x" id="reddit-icon"></i></a>
+        </div>
+        <div class="link text-center">
+          <p>Official Presskit</p>
+          <a href="{{ detailedLaunch$.links?.presskit }}"><i class="fas fa-file-alt fa-3x" id="press-icon"></i></a>
+        </div>
+        <div class="link text-center">
+          <p>News Article</p>
+          <a href="{{ detailedLaunch$.links?.article_link }}"><i class="far fa-newspaper fa-3x" id="news-icon"></i></a>
+        </div>
+
+      </div>
+      <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center payload">
+          <h3 class="payload-name" *ngIf="detailedLaunch$.rocket">Payload: {{ detailedLaunch$.rocket.second_stage.payloads[0].payload_id }}</h3>
+          <p>Reused: {{detailedLaunch$.rocket.second_stage.payloads[0].reused}}<br> Mass: {{detailedLaunch$.rocket.second_stage.payloads[0].payload_mass_kg}}(kg), {{detailedLaunch$.rocket.second_stage.payloads[0].payload_mass_lbs}}(lbs)  </p>
+      </div>
+    </div>
+</div>
