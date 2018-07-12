@@ -1,57 +1,45 @@
 @import url('https://fonts.googleapis.com/css?family=Coda+Caption:800');
 
-html, body {
-  height: 100%;
-  overflow: hidden;
-}
+html, body {margin: 0; height: 100%; overflow: hidden}
 
-body {
-  background-color:rgb(59, 59, 59);
-}
-
-.primary-info {
+.left-div {
   border: 3px solid #313131;
-  width:auto;
-  height:74vh;
-  overflow:scroll;
+  height:98vh;
 }
-
-.flight-data {
+.right-div {
   border: 3px solid #313131;
-  height:20vh;
-  bottom:2px;
-  overflow:hidden;
-}
-
-.flight-data img{
-  width:80%;
+  height:98vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding:20px;
+}
+
+.right-div p {
+  position:relative;
+  top:22%;
+}
+
+.launch-scroller {
+  overflow:scroll;
+  height:70%;;
+}
+
+.spacex-img {
+  height:20vh;
+}
+
+.spacex-img img{
+  display: block;
+  padding:15px;
+  margin-left: auto;
+  margin-right: auto;
   -webkit-filter: drop-shadow(5px 5px 5px #222);
-  filter: drop-shadow(5px 5px 5px #222);}
-
-.media-info {
-  border: 3px solid #313131;
-  height:95vh;
+  filter: drop-shadow(5px 5px 5px #222);
+  width:100%;
 }
 
 
-.left-side {
-  float:left;
-  width:50%;
-
-}
-
-.right-side {
-  float:right;
-  width:50%;
-  position:fixed;
-  right:2px;
-}
-
-.right-side img {
+.right-div img {
   z-index: -1;
   position:fixed;
   margin:auto;
@@ -67,12 +55,14 @@ li {
 }
 
 p {
-  font-family: 'Coda Caption', sans-serif;
   color:rgb(26, 26, 26);
   font-size:24px;
   text-align: center;
-  padding-top:100px;
   margin:20px;
+}
+
+.future-text {
+  font-family: 'Coda Caption', sans-serif;
 }
 
 #blue {
@@ -85,7 +75,4 @@ h2 {
   font-family: 'Coda Caption', sans-serif;
 }
 
-html, body {
-  height: 100%;
-  overflow: hidden
-}
+

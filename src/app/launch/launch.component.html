@@ -1,33 +1,34 @@
+<div class="container-fluid">
+  <div class="row">
 
 
-<div class="float-left left-side">
-
-  <div class="primary-info">
-    <h2>Launch History:</h2>
-    <hr>
-    <ul>
-      <li *ngFor="let launch of launch$">
-        <a routerLink="/launch/{{launch.flight_number}}">Flight #: {{ launch.flight_number }} || {{ launch.mission_name }} || {{ launch.launch_date_utc }}</a>
-      </li>
-    </ul>
-  </div>
-  <div class="flight-data">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/SpaceX-Logo.svg/2000px-SpaceX-Logo.svg.png" alt="No img">
-  </div>
-</div>
-
-<div class="float-right right-side">
-    <div class="media-info">
-        <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/39980-200.png" alt="No img">
-        <p>Hello <span id="blue">Cadets!</span></p>
-
-        <p>This project is in no way affiliated with <span id="blue">SpaceX</span>. This is just a fun way to practice
-          my Angular/http/json skills.
-        </p>
-
-        <p><span id="blue">Click</span> on any launch for <span id="blue">more</span> details!</p>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 left-div">
+        <h2>Launch History:</h2>
+        <hr>
+      <div class="launch-scroller">
+        <ul>
+          <li *ngFor="let launch of launch$">
+            <a routerLink="/launch/{{launch.flight_number}}">Flight #: {{ launch.flight_number }} || {{ launch.mission_name }} || {{ launch.launch_date_utc }}</a>
+          </li>
+        </ul>
+      </div>
+      <div class="spacex-img">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/SpaceX-Logo.svg/2000px-SpaceX-Logo.svg.png" alt="No img">
+      </div>
     </div>
 
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 right-div">
+      <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/39980-200.png" alt="No img">
+      <p class="future-text">Hello <span id="blue">Cadets!</span></p>
+
+      <p class="future-text">This project is in no way affiliated with <span id="blue">SpaceX</span>.</p>
+
+      <p class="future-text"><span id="blue">Click</span> on any launch for <span id="blue">more</span> details!</p>
+      <p>Powered by <a href="https://github.com/r-spacex/SpaceX-API">r/spaceX SpaceX-API</a></p>
+    </div>
+
+
+  </div>
 </div>
 
 

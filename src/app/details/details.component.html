@@ -18,7 +18,7 @@
    <div class="row video-details">
     <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center details">
       <h1 class="rocket-name" *ngIf="detailedLaunch$.rocket">{{ detailedLaunch$.rocket.rocket_name }}</h1>
-
+      <p id="white">{{ detailedLaunch$.launch_site?.site_name_long }}</p>
       <p class="inner-details">
         {{ detailedLaunch$.details }}
       </p>

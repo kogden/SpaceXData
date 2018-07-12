@@ -49,6 +49,7 @@ iframe {
 .payload-info{
   border:2px solid rgb(48, 48, 48);
   height:8em;
+  overflow:scroll;
 }
 
 #reddit-icon {
@@ -63,11 +64,18 @@ iframe {
   color:rgb(40, 119, 209);
 }
 
+#white {
+  color:rgb(202, 202, 202);
+}
 
 .link {
   padding:20px;
   display:inline-block;
   height:10px;
+}
+
+.link p {
+  color:rgb(202, 202, 202);
 }
 
 .payload {

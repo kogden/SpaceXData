@@ -1,5 +1,6 @@
 import { Links } from './Links';
 import { Rocket } from './Rocket';
+import { LaunchSite } from './LaunchSite';
 
 export interface Launch {
   flight_number: number;    // 64
@@ -7,7 +8,7 @@ export interface Launch {
   launch_year?: string;      // 2018
   launch_date_utc?: string;      // 2018-06-29TO9:42:00.000Z
   telemetry?: string;          // flight_club: "https://www.flightclub.io/results/?code=CR15"
-  launch_site?: string;        // CCAFS SLC 40
+  launch_site?: LaunchSite;        // CCAFS SLC 40
   launch_success?: boolean;    // true
   site_name_long?: string;     // Cape Canaveral Air Force Station Space Launch Complex 40
   links: Links;                            // ai-enabled-robot-companion-vegetation-monitor-to-space-station/
