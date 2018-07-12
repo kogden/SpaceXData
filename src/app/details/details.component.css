@@ -1,81 +1,86 @@
-@import url('https://fonts.googleapis.com/css?family=Russo+One');
+@import url("https://fonts.googleapis.com/css?family=Russo+One");
 
 body {
   background-color: rgb(59, 59, 59);
 }
 
 .header {
-  background-image:url("https://mk0spaceflightnoa02a.kinstacdn.com/wp-content/uploads/2015/12/23604164970_b573f4d0f4_k.jpg");
+  background-image: url("https://mk0spaceflightnoa02a.kinstacdn.com/wp-content/uploads/2015/12/23604164970_b573f4d0f4_k.jpg");
   background-position-x: 20%;
-  height:7em;
-  width:100%;
+  height: 7em;
+  width: 100%;
   cursor: pointer;
+  overflow:hidden;
 }
 
 .header img {
-  width:50%;
-  min-height:50%;
+  width: 50%;
+  min-height: 50%;
   -webkit-filter: drop-shadow(5px 5px 5px #222);
   filter: drop-shadow(5px 5px 5px #222);
-  margin:10px;
+  margin: 10px;
 }
 
 .col {
-  border:2px solid rgb(48, 48, 48);
+  border: 2px solid rgb(48, 48, 48);
 }
 
 .video-details {
-  padding:10px;
-  border:2px solid rgb(48, 48, 48);
+  padding: 10px;
+  border: 2px solid rgb(48, 48, 48);
 }
 
-.inner-details{
+.inner-details {
   color: rgb(199, 241, 199);
   margin: 0;
-  padding:30px;
+  padding: 30px;
   vertical-align: middle;
 }
 .rocket-name {
-  color:rgb(40, 119, 209);
-  font-family: 'Russo One', sans-serif;
+  color: rgb(40, 119, 209);
+  font-family: "Russo One", sans-serif;
 }
 iframe {
-  padding-right:30px;
-  position:relative;
-  max-width:460;
-  min-width:250;
+  padding-right: 30px;
+  position: relative;
+  max-width: 460;
+  min-width: 250;
 }
 
-.payload-info{
-  border:2px solid rgb(48, 48, 48);
-  height:8em;
-  overflow:scroll;
+.payload-info {
+  border: 2px solid rgb(48, 48, 48);
+  height: 8em;
+  overflow: hidden;
 }
 
 #reddit-icon {
-  color:#FF7C31;
+  color: #ff7c31;
 }
 
 #press-icon {
-  color:white;
+  color: white;
 }
 
-#news-icon{
-  color:rgb(40, 119, 209);
+#news-icon {
+  color: rgb(40, 119, 209);
+}
+
+#wiki-icon {
+  color:rgb(187, 187, 187);
 }
 
 #white {
-  color:rgb(202, 202, 202);
+  color: rgb(202, 202, 202);
 }
 
 .link {
-  padding:20px;
-  display:inline-block;
-  height:10px;
+  padding: 20px;
+  display: inline-block;
+  height: 10px;
 }
 
 .link p {
-  color:rgb(202, 202, 202);
+  color: rgb(202, 202, 202);
 }
 
 .payload {
@@ -83,5 +88,20 @@ iframe {
 }
 
 .mission-status-inline h2 {
-  display:inline-block;
+  display: inline-block;
 }
+
+.orbit-info {
+  height:160px;
+  border: 2px solid rgb(48, 48, 48);
+}
+
+.orbit-info p {
+  margin:0;
+}
+
+#blue {
+  color:rgb(119, 119, 119);
+}
+
+

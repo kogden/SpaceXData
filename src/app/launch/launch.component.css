@@ -1,53 +1,57 @@
-@import url('https://fonts.googleapis.com/css?family=Coda+Caption:800');
+@import url("https://fonts.googleapis.com/css?family=Coda+Caption:800");
 
-html, body {margin: 0; height: 100%; overflow: hidden}
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+}
 
 .left-div {
   border: 3px solid #313131;
-  height:98vh;
+  height: 98vh;
 }
 .right-div {
   border: 3px solid #313131;
-  height:98vh;
+  height: 98vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
 }
 
 .right-div p {
-  position:relative;
-  top:22%;
+  position: relative;
+  top: 24%;
 }
 
 .launch-scroller {
-  overflow:scroll;
-  height:70%;;
+  overflow: scroll;
+  height: 70%;
 }
 
 .spacex-img {
-  height:20vh;
+  height: 20vh;
 }
 
-.spacex-img img{
+.spacex-img img {
   display: block;
-  padding:15px;
+  padding: 15px;
   margin-left: auto;
   margin-right: auto;
   -webkit-filter: drop-shadow(5px 5px 5px #222);
   filter: drop-shadow(5px 5px 5px #222);
-  width:100%;
+  width: 100%;
 }
-
 
 .right-div img {
   z-index: -1;
-  position:fixed;
-  margin:auto;
-  opacity:0.3;
+  position: fixed;
+  margin: auto;
+  opacity: 0.3;
 }
 
 a {
-  color:rgb(21, 132, 196);
+  color: rgb(21, 132, 196);
 }
 
 li {
@@ -55,24 +59,22 @@ li {
 }
 
 p {
-  color:rgb(26, 26, 26);
-  font-size:24px;
+  color: rgb(26, 26, 26);
+  font-size: 24px;
   text-align: center;
-  margin:20px;
+  margin: 20px;
 }
 
 .future-text {
-  font-family: 'Coda Caption', sans-serif;
+  font-family: "Coda Caption", sans-serif;
 }
 
 #blue {
-  color:rgb(0, 97, 153);
+  color: rgb(0, 97, 153);
 }
 
 h2 {
-  color:rgb(26, 26, 26);
-  padding-left:10px;
-  font-family: 'Coda Caption', sans-serif;
+  color: rgb(26, 26, 26);
+  padding-left: 10px;
+  font-family: "Coda Caption", sans-serif;
 }
-
-
