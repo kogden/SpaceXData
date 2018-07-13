@@ -58,7 +58,7 @@
   </div>
   <div class="row payload-info ft-text">
     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 payload text-center">
-      <h3 class="payload-name" *ngIf="detailedLaunch$.rocket">Payload(s): {{ detailedLaunch$.rocket.second_stage.payloads[0].payload_id }} [{{ detailedLaunch$.rocket.second_stage.payloads[0].payload_type
+      <h3 class="payload-name" *ngIf="detailedLaunch$.rocket.second_stage">Payload(s): {{ detailedLaunch$.rocket.second_stage.payloads[0].payload_id }} [{{ detailedLaunch$.rocket.second_stage.payloads[0].payload_type
         }}]</h3>
       <p>Reused: {{detailedLaunch$.rocket.second_stage.payloads[0].reused}}
         <br> Mass: {{detailedLaunch$.rocket.second_stage.payloads[0].payload_mass_kg}}(kg), {{detailedLaunch$.rocket.second_stage.payloads[0].payload_mass_lbs}}(lbs)
@@ -78,7 +78,7 @@
       <p>Eccentricity: <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.eccentricity }}</span></p>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 orbit-info-2">
-      <p>Periapsis (km): <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.pariapsis_km }}</span></p>
+      <p>Periapsis (km): <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.periapsis_km }}</span></p>
       <p>Apoapsis (km): <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.apoapsis_km }}</span></p>
       <p>Inclination (deg): <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.inclination_deg }}</span></p>
       <p>Period (min): <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.period_min }}</span></p>

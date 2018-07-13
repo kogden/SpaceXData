@@ -6,7 +6,7 @@ body {
 
 .header {
   background-image: url("https://mk0spaceflightnoa02a.kinstacdn.com/wp-content/uploads/2015/12/23604164970_b573f4d0f4_k.jpg");
-  background-position-x: 20%;
+  background-position-x: 34%;
   height: 7em;
   width: 100%;
   cursor: pointer;
@@ -19,6 +19,8 @@ body {
   -webkit-filter: drop-shadow(5px 5px 5px #222);
   filter: drop-shadow(5px 5px 5px #222);
   margin: 10px;
+  padding-left:20px;
+  float:left;
 }
 
 .col {
@@ -33,7 +35,7 @@ body {
 .inner-details {
   color: rgb(199, 241, 199);
   margin: 0;
-  padding: 30px;
+  padding: 20px;
   vertical-align: middle;
 }
 .rocket-name {
@@ -92,7 +94,7 @@ iframe {
 }
 
 .orbit-info {
-  height:160px;
+  height:140px;
   border: 2px solid rgb(48, 48, 48);
 }
 

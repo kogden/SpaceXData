@@ -1,4 +1,5 @@
 import { Customer } from './Customer';
+import { OrbitParams } from './OrbitParams';
 
 export interface Payloads {
   payload_id: string;
@@ -7,5 +8,5 @@ export interface Payloads {
   payload_type: string;
   payload_mass_kg: number;
   payload_mass_lbs: number;
-  orbit: string;
+  orbit_params: OrbitParams;
 }
