@@ -28,8 +28,8 @@ body {
 }
 
 .video-details {
-  padding: 10px;
   border: 2px solid rgb(48, 48, 48);
+  padding:10px;
 }
 
 .inner-details {
@@ -43,7 +43,7 @@ body {
   font-family: "Russo One", sans-serif;
 }
 iframe {
-  padding-right: 30px;
+  padding-right: 20px;
   position: relative;
   max-width: 460;
   min-width: 250;
@@ -75,8 +75,15 @@ iframe {
   color: rgb(202, 202, 202);
 }
 
+.links {
+  padding-bottom:20px;
+  padding-top: 20px;
+  border: 2px solid rgb(48, 48, 48);
+}
+
 .link {
-  padding: 20px;
+  padding-right: 35px;
+  padding-left: 35px;
   display: inline-block;
   height: 10px;
 }

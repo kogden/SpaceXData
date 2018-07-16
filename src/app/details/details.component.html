@@ -25,6 +25,14 @@
         {{ detailedLaunch$.details }}
       </p>
 
+    </div>
+    <iframe *ngIf="detailedLaunch$?.links" [src]=getEmbedUrl(detailedLaunch$) width="460" height="315" frameBorder="0" class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-center"
+      allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen"
+      webkitallowfullscreen="webkitallowfullscreen">
+    </iframe>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center links">
       <div class="link text-center">
         <p>Reddit</p>
         <a href="{{ detailedLaunch$.links?.reddit_media }}">
@@ -44,33 +52,28 @@
         </a>
       </div>
       <div class="link text-center">
-          <p>Wikipedia</p>
-          <a href="{{ detailedLaunch$.links?.wikipedia }}">
-            <i class="fab fa-wikipedia-w fa-3x" id="wiki-icon"></i>
-          </a>
-        </div>
-
+        <p>Wikipedia</p>
+        <a href="{{ detailedLaunch$.links?.wikipedia }}">
+          <i class="fab fa-wikipedia-w fa-3x" id="wiki-icon"></i>
+        </a>
+      </div>
     </div>
-    <iframe *ngIf="detailedLaunch$.links" [src]=getEmbedUrl(detailedLaunch$) width="460" height="315" frameBorder="0" class="col-xs-5 col-sm-5 col-md-5 col-lg-5 text-center"
-      allowfullscreen="allowfullscreen" mozallowfullscreen="mozallowfullscreen" msallowfullscreen="msallowfullscreen" oallowfullscreen="oallowfullscreen"
-      webkitallowfullscreen="webkitallowfullscreen">
-    </iframe>
   </div>
   <div class="row payload-info ft-text">
     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 payload text-center">
-      <h3 class="payload-name" *ngIf="detailedLaunch$.rocket.second_stage">Payload(s): {{ detailedLaunch$.rocket.second_stage.payloads[0].payload_id }} [{{ detailedLaunch$.rocket.second_stage.payloads[0].payload_type
+      <h3 class="payload-name" *ngIf="detailedLaunch$?.rocket?.second_stage">Payload(s): {{ detailedLaunch$.rocket?.second_stage?.payloads[0].payload_id }} [{{ detailedLaunch$.rocket?.second_stage?.payloads[0].payload_type
         }}]</h3>
-      <p>Reused: {{detailedLaunch$.rocket.second_stage.payloads[0].reused}}
-        <br> Mass: {{detailedLaunch$.rocket.second_stage.payloads[0].payload_mass_kg}}(kg), {{detailedLaunch$.rocket.second_stage.payloads[0].payload_mass_lbs}}(lbs)
+      <p>Reused: {{detailedLaunch$?.rocket?.second_stage?.payloads[0].reused}}
+        <br> Mass: {{detailedLaunch$?.rocket?.second_stage.payloads[0].payload_mass_kg}}(kg), {{detailedLaunch$.rocket?.second_stage?.payloads[0].payload_mass_lbs}}(lbs)
       </p>
     </div>
     <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center payload">
       <h2>Telemetry:</h2>
-      <p><a href="{{ detailedLaunch$.telemetry.flight_club }}">{{ detailedLaunch$.telemetry.flight_club }}</a></p>
+      <p><a href="{{ detailedLaunch$.telemetry?.flight_club }}">{{ detailedLaunch$.telemetry?.flight_club }}</a></p>
     </div>
   </div>
   <div class="row orbit-info ft-text">
-    <div *ngIf="detailedLaunch$.rocket.second_stage" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 orbit-info-1">
+    <div *ngIf="detailedLaunch$.rocket?.second_stage" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 orbit-info-1">
       <p>Reference system: <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.reference_system }}</span></p>
       <p>Regime: <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.regime }}</span></p>
       <p>Longitude: <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.longitude }}</span></p>
@@ -78,21 +81,21 @@
       <p>Eccentricity: <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.eccentricity }}</span></p>
     </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 orbit-info-2">
-      <p>Periapsis (km): <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.periapsis_km }}</span></p>
-      <p>Apoapsis (km): <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.apoapsis_km }}</span></p>
-      <p>Inclination (deg): <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.inclination_deg }}</span></p>
-      <p>Period (min): <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.period_min }}</span></p>
-      <p>Lifespan (years): <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.lifespan_years }}</span></p>
+      <p>Periapsis (km): <span id="blue">{{ detailedLaunch$.rocket?.second_stage.payloads[0].orbit_params.periapsis_km }}</span></p>
+      <p>Apoapsis (km): <span id="blue">{{ detailedLaunch$.rocket?.second_stage.payloads[0].orbit_params.apoapsis_km }}</span></p>
+      <p>Inclination (deg): <span id="blue">{{ detailedLaunch$.rocket?.second_stage.payloads[0].orbit_params.inclination_deg }}</span></p>
+      <p>Period (min): <span id="blue">{{ detailedLaunch$.rocket?.second_stage.payloads[0].orbit_params.period_min }}</span></p>
+      <p>Lifespan (years): <span id="blue">{{ detailedLaunch$.rocket?.second_stage.payloads[0].orbit_params.lifespan_years }}</span></p>
     </div>
     <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 underline">
       <u>Reuse:</u>
     </div>
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 reuse">
-      <p>core: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse.core)  === 'Successful' ? '#89ce89' : '#db7979'}">{{ detailedLaunch$.reuse.core }}</span></p>
-      <p>side core1: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse.side_core1)  === 'Successful' ? '#89ce89' : '#db7979'}">{{ detailedLaunch$.reuse.side_core1 }}</span></p>
-      <p>side core2: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse.side_core2)  === 'Successful' ? '#89ce89' : '#db7979'}">{{ detailedLaunch$.reuse.side_core2 }}</span></p>
-      <p>fairings: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse.fairings)  === 'Successful' ? '#89ce89' : '#db7979'}"> {{ detailedLaunch$.reuse.fairings }}</span></p>
-      <p>capsule: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse.capsule)  === 'Successful' ? '#89ce89' : '#db7979'}"> {{ detailedLaunch$.reuse.capsule }}</span></p>
+      <p>core: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.core)  === 'Successful' ? '#89ce89' : '#db7979'}">{{ detailedLaunch$.reuse?.core }}</span></p>
+      <p>side core1: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.side_core1)  === 'Successful' ? '#89ce89' : '#db7979'}">{{ detailedLaunch$.reuse?.side_core1 }}</span></p>
+      <p>side core2: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.side_core2)  === 'Successful' ? '#89ce89' : '#db7979'}">{{ detailedLaunch$.reuse?.side_core2 }}</span></p>
+      <p>fairings: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.fairings)  === 'Successful' ? '#89ce89' : '#db7979'}"> {{ detailedLaunch$.reuse?.fairings }}</span></p>
+      <p>capsule: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.capsule)  === 'Successful' ? '#89ce89' : '#db7979'}"> {{ detailedLaunch$.reuse?.capsule }}</span></p>
     </div>
   </div>
 </div>
