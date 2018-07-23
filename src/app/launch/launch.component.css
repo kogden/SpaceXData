@@ -1,53 +1,127 @@
 @import url("https://fonts.googleapis.com/css?family=Coda+Caption:800");
-
+/*
+VALUES:
+BLUE: #005384
+GRAY: #A7A9AC
+*/
 html,
 body {
   margin: 0;
   height: 100%;
-  overflow: hidden;
+  overflow: scroll;
+  display:flex;
 }
 
-.left-div {
-  border: 3px solid #313131;
-  height: 98vh;
+.jumbotron {
+  background-image: url("https://res.cloudinary.com/dacxbqrp3/image/upload/v1532099677/16510243060_42b6169bd4_k_msshaq.jpg");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position: 10% 10%;
+  width:100%;
+  max-width:100%;
+  height:50vh;
+  padding:0;
+  justify-content:center;
+
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+       -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+         -o-animation: fadein 2s; /* Opera < 12.1 */
+            animation: fadein 2s;
 }
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Opera < 12.1 */
+@-o-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+
+.jumbotron .container h1 {
+  white-space: nowrap; /* Keeps the content on a single line */
+  color:white;
+  font-size:6vh;
+  font-family: 'Oswald', sans-serif;
+  font-stretch: ultra-condensed;
+
+}
+
+.jumbotron .container {
+  padding:0;
+  margin:0;
+  width:100%;
+  max-width:100%;
+}
+
 .right-div {
-  border: 3px solid #313131;
+  padding-top:5px;
+  height: 98vh;
+  border-left: 3px solid #007EA7;
+}
+.left-div {
   height: 98vh;
   display: block;
   margin-left: auto;
   margin-right: auto;
-}
-
-.right-div p {
-  position: relative;
-  top: 24%;
 }
 
 .launch-scroller {
   overflow: scroll;
-  height: 70%;
+  overflow-x:hidden;
+  height: 50%;
+}
+.upcoming-launch-scroller {
+  overflow: scroll;
+  overflow-x:hidden;
+  height: 14%;
+}
+
+#logo {
+  width:100%;
+  height:auto;
+  display: block;
+  padding: 5px;
+  float:left;
+  -webkit-filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.534));
+  filter: drop-shadow(5px 5px 5px rgba(34, 34, 34, 0.534));
 }
 
 .spacex-img {
-  height: 20vh;
+  height:20%;
 }
 
 .spacex-img img {
-  display: block;
-  padding: 15px;
-  margin-left: auto;
-  margin-right: auto;
-  -webkit-filter: drop-shadow(5px 5px 5px #222);
-  filter: drop-shadow(5px 5px 5px #222);
-  width: 100%;
+  cursor:pointer;
 }
 
 .right-div img {
   z-index: -1;
-  position: fixed;
+  position: absolute;
   margin: auto;
-  opacity: 0.3;
+  opacity: 0.8;
 }
 
 a {
@@ -59,13 +133,15 @@ li {
 }
 
 p {
-  color: rgb(26, 26, 26);
+  color: #9e9e9e;
   font-size: 24px;
   text-align: center;
   margin: 20px;
 }
 
 .future-text {
+  position: relative;
+  bottom:10%;
   font-family: "Coda Caption", sans-serif;
 }
 
@@ -74,7 +150,32 @@ p {
 }
 
 h2 {
-  color: rgb(26, 26, 26);
+  color: #9e9e9e;
   padding-left: 10px;
   font-family: "Coda Caption", sans-serif;
 }
+
+#spacex-link {
+  display:block;
+  width:100%;
+  height:100%;
+}
+
+#dates {
+  float:right;
+}
+
+#launchlist {
+  display:inline;
+}
+
+#flightrow {
+  border-bottom:1px solid rgba(0, 79, 105, 0.63);
+  cursor:pointer;
+}
+
+.default {
+  cursor:default;
+}
+
+

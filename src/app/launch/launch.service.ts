@@ -11,6 +11,7 @@ import { map } from "rxjs/operators";
 })
 export class LaunchService {
   url = "https://api.spacexdata.com/v2/launches";
+  upcomingLaunchUrl = "https://api.spacexdata.com/v2/launches/upcoming";
 
   constructor(private http: HttpClient) {}
 
@@ -23,5 +24,10 @@ export class LaunchService {
     return this.http
       .get<Launch>(this.url + "/all?flight_number=" + launchNumber)
       .pipe(map(data => data[0]));
+  }
+
+
+  getUpcomingLaunchData(): Observable<Launch[]> {
+    return this.http.get<Launch[]>(this.upcomingLaunchUrl);
   }
 }

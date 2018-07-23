@@ -1,0 +1,144 @@
+<div class="header text-center" routerLink="">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/SpaceX-Logo.svg/2000px-SpaceX-Logo.svg.png" alt="No img">
+</div>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col text-center left-bor">
+      <h2 *ngIf="detailedLaunch$">{{ detailedLaunch$.mission_name }}</h2>
+    </div>
+    <div class="col text-center mission-status-inline right-bor">
+      <h2 id="mission-status">Status:
+        <span id="color">Upcoming</span>
+      </h2>
+    </div>
+  </div>
+
+  <div class="row video-details ft-text">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center details">
+      <h1 class="rocket-name" *ngIf="detailedLaunch$.rocket">{{ detailedLaunch$.rocket?.rocket_name }}</h1>
+      <h2>{{ getDate(detailedLaunch$) }}</h2>
+      <h4 id="dark">{{ detailedLaunch$.launch_site?.site_name_long }}</h4>
+      <ng-template [ngIf]="detailedLaunch$.details" [ngIfElse]="noDetails">
+          <p class="inner-details">
+              {{ detailedLaunch$.details }}
+          </p>
+      </ng-template>
+      <ng-template #noDetails>
+          <p id="dark">
+            [More details to be added closer to launch date]
+          </p>
+        </ng-template>
+
+      <ng-template [ngIf]="detailedLaunch$.links?.reddit_campaign" [ngIfElse]="noWatch">
+          <p id="blue">Reddit Campaign / FAQ</p>
+          <a href="{{ detailedLaunch$.links?.reddit_campaign }}">
+            <i class="fab fa-reddit-square fa-3x" id="reddit-icon"></i>
+          </a>
+      </ng-template>
+      <ng-template #noWatch>
+        <p id="dark">
+          ['Where to watch' will be updated closer to launch date]
+        </p>
+      </ng-template>
+    </div>
+  </div>
+
+  <div class="row" *ngIf=linksExist()>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center links">
+      <div class="link text-center" *ngIf=(detailedLaunch$.links.reddit_media)>
+          <p>Reddit</p>
+          <a href="{{ detailedLaunch$.links?.reddit_media }}">
+            <i class="fab fa-reddit-square fa-3x" id="reddit-icon"></i>
+          </a>
+        </div>
+        <div class="link text-center" *ngIf=(detailedLaunch$.links.presskit)>
+          <p>Official Presskit</p>
+          <a href="{{ detailedLaunch$.links?.presskit }}">
+            <i class="fas fa-file-alt fa-3x" id="press-icon"></i>
+          </a>
+        </div>
+        <div class="link text-center" *ngIf=(detailedLaunch$.links.article_link)>
+          <p>News Article</p>
+          <a href="{{ detailedLaunch$.links?.article_link }}">
+            <i class="far fa-newspaper fa-3x" id="news-icon"></i>
+          </a>
+        </div>
+        <div class="link text-center" *ngIf=(detailedLaunch$.links.wikipedia)>
+          <p>Wikipedia</p>
+          <a href="{{ detailedLaunch$.links?.wikipedia }}">
+            <i class="fab fa-wikipedia-w fa-3x" id="wiki-icon"></i>
+          </a>
+        </div>
+    </div>
+  </div>
+
+  <div class="row payload-info ft-text">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 payload text-center">
+      <h3 class="payload-name" *ngIf="detailedLaunch$?.rocket?.second_stage">Payload(s):<br> {{ detailedLaunch$.rocket?.second_stage?.payloads[0].payload_id }} [{{ detailedLaunch$.rocket?.second_stage?.payloads[0].payload_type
+        }}]
+      </h3>
+      <p>Reused:
+        <span id="color">n/a</span>
+        <br> Mass: {{detailedLaunch$?.rocket?.second_stage.payloads[0].payload_mass_kg}}(kg), {{detailedLaunch$.rocket?.second_stage?.payloads[0].payload_mass_lbs}}(lbs)
+      </p>
+    </div>
+  </div>
+  <div class="row orbit-info ft-text">
+    <div *ngIf="detailedLaunch$.rocket?.second_stage" class="col-xs-4 col-sm-4 col-md-4 col-lg-4 orbit-info-1">
+      <p>Reference system:
+        <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.reference_system }}</span>
+      </p>
+      <p>Regime:
+        <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.regime }}</span>
+      </p>
+      <p>Longitude:
+        <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.longitude }}</span>
+      </p>
+      <p>Semi-major-axis (km):
+        <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.semi_major_axis_km }}</span>
+      </p>
+      <p>Eccentricity:
+        <span id="blue">{{ detailedLaunch$.rocket.second_stage.payloads[0].orbit_params.eccentricity }}</span>
+      </p>
+    </div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 orbit-info-2">
+      <p>Periapsis (km):
+        <span id="blue">{{ detailedLaunch$.rocket?.second_stage.payloads[0].orbit_params.periapsis_km }}</span>
+      </p>
+      <p>Apoapsis (km):
+        <span id="blue">{{ detailedLaunch$.rocket?.second_stage.payloads[0].orbit_params.apoapsis_km }}</span>
+      </p>
+      <p>Inclination (deg):
+        <span id="blue">{{ detailedLaunch$.rocket?.second_stage.payloads[0].orbit_params.inclination_deg }}</span>
+      </p>
+      <p>Period (min):
+        <span id="blue">{{ detailedLaunch$.rocket?.second_stage.payloads[0].orbit_params.period_min }}</span>
+      </p>
+      <p>Lifespan (years):
+        <span id="blue">{{ detailedLaunch$.rocket?.second_stage.payloads[0].orbit_params.lifespan_years }}</span>
+      </p>
+    </div>
+    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 underline">
+      <u>Reuse:</u>
+    </div>
+    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 reuse">
+      <p>core:
+        <span id="color">n/a</span>
+      </p>
+      <p>side core1:
+        <span id="color">n/a</span>
+      </p>
+      <p>side core2:
+        <span id="color">n/a</span>
+      </p>
+      <p>fairings:
+        <span id="color">n/a</span>
+      </p>
+      <p>capsule:
+        <span id="color">n/a</span>
+      </p>
+    </div>
+  </div>
+</div>

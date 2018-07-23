@@ -4,4 +4,5 @@ export interface Links {
   reddit_media?: string;
   video_link?: string;
   wikipedia?: string;
+  reddit_campaign?: string;
 }

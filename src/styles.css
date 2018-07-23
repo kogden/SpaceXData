@@ -1,6 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
-
+/* rgb(59, 59, 59) */
+@import url('https://fonts.googleapis.com/css?family=Oswald:700');
 
 body {
-  background-color: rgb(59, 59, 59) !important;
+  background-color: rgb(21, 22, 22) !important;
 }
+
+/*
+darkblue: #00171F
+blue: #003459
+midlvl blue: #007EA7
+light blue: #00A8E8
+*/

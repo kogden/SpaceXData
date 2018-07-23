@@ -1,26 +1,25 @@
-<div class="header text-center" routerLink="">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/SpaceX-Logo.svg/2000px-SpaceX-Logo.svg.png" alt="No img">
+<div class="header text-center row" routerLink="">
+  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/de/SpaceX-Logo.svg/2000px-SpaceX-Logo.svg.png" alt="No img">
+  </div>
 </div>
 
 
 <div class="container">
   <div class="row">
-    <div class="col text-center">
-      <h2 *ngIf="detailedLaunch$">Flight # {{ detailedLaunch$.flight_number }}</h2>
-    </div>
-    <div class="col text-center">
+    <div class="col text-center left-bor">
       <h2 *ngIf="detailedLaunch$">{{ detailedLaunch$.mission_name }}</h2>
     </div>
-    <div class="col text-center mission-status-inline">
+    <div class="col text-center mission-status-inline right-bor">
       <h2 id="mission-status">Status:
-        <span [ngStyle]="{'color': checkSuccess() === 'Successful' ? '#89ce89' : '#db7979'}">{{ checkSuccess() }}</span>
+        <span [ngStyle]="{'color': checkSuccess() === 'Successful' ? '#64d164' : '#db4e4e'}">{{ checkSuccess() }}</span>
       </h2>
     </div>
   </div>
   <div class="row video-details ft-text">
     <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center details">
       <h1 class="rocket-name" *ngIf="detailedLaunch$.rocket">{{ detailedLaunch$.rocket.rocket_name }}</h1>
-      <p id="white">{{ detailedLaunch$.launch_site?.site_name_long }}</p>
+      <h5 id="dark">{{ detailedLaunch$.launch_site?.site_name_long }}</h5>
       <p class="inner-details">
         {{ detailedLaunch$.details }}
       </p>
@@ -33,25 +32,25 @@
   </div>
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center links">
-      <div class="link text-center">
+      <div class="link text-center" *ngIf=(detailedLaunch$.links.reddit_media)>
         <p>Reddit</p>
         <a href="{{ detailedLaunch$.links?.reddit_media }}">
           <i class="fab fa-reddit-square fa-3x" id="reddit-icon"></i>
         </a>
       </div>
-      <div class="link text-center">
+      <div class="link text-center" *ngIf=(detailedLaunch$.links.presskit)>
         <p>Official Presskit</p>
         <a href="{{ detailedLaunch$.links?.presskit }}">
           <i class="fas fa-file-alt fa-3x" id="press-icon"></i>
         </a>
       </div>
-      <div class="link text-center">
+      <div class="link text-center" *ngIf=(detailedLaunch$.links.article_link)>
         <p>News Article</p>
         <a href="{{ detailedLaunch$.links?.article_link }}">
           <i class="far fa-newspaper fa-3x" id="news-icon"></i>
         </a>
       </div>
-      <div class="link text-center">
+      <div class="link text-center" *ngIf=(detailedLaunch$.links.wikipedia)>
         <p>Wikipedia</p>
         <a href="{{ detailedLaunch$.links?.wikipedia }}">
           <i class="fab fa-wikipedia-w fa-3x" id="wiki-icon"></i>
@@ -61,15 +60,20 @@
   </div>
   <div class="row payload-info ft-text">
     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 payload text-center">
-      <h3 class="payload-name" *ngIf="detailedLaunch$?.rocket?.second_stage">Payload(s): {{ detailedLaunch$.rocket?.second_stage?.payloads[0].payload_id }} [{{ detailedLaunch$.rocket?.second_stage?.payloads[0].payload_type
+      <h3 class="payload-name" *ngIf="detailedLaunch$?.rocket?.second_stage">Payload(s): <br>{{ detailedLaunch$.rocket?.second_stage?.payloads[0].payload_id }} [{{ detailedLaunch$.rocket?.second_stage?.payloads[0].payload_type
         }}]</h3>
-      <p>Reused: {{detailedLaunch$?.rocket?.second_stage?.payloads[0].reused}}
+      <p>Reused: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.rocket?.second_stage?.payloads[0].reused)  === 'Successful' ? '#64d164' : '#db4e4e'}">{{detailedLaunch$?.rocket?.second_stage?.payloads[0].reused}}</span>
         <br> Mass: {{detailedLaunch$?.rocket?.second_stage.payloads[0].payload_mass_kg}}(kg), {{detailedLaunch$.rocket?.second_stage?.payloads[0].payload_mass_lbs}}(lbs)
       </p>
     </div>
     <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 text-center payload">
       <h2>Telemetry:</h2>
-      <p><a href="{{ detailedLaunch$.telemetry?.flight_club }}">{{ detailedLaunch$.telemetry?.flight_club }}</a></p>
+      <ng-template [ngIf]="detailedLaunch$.telemetry?.flight_club" [ngIfElse]="noTelemetry">
+          <p><a href="{{ detailedLaunch$.telemetry?.flight_club }}">{{ detailedLaunch$.telemetry?.flight_club }}</a></p>
+      </ng-template>
+      <ng-template #noTelemetry>
+        <p>none</p>
+      </ng-template>
     </div>
   </div>
   <div class="row orbit-info ft-text">
@@ -91,11 +95,11 @@
       <u>Reuse:</u>
     </div>
     <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 reuse">
-      <p>core: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.core)  === 'Successful' ? '#89ce89' : '#db7979'}">{{ detailedLaunch$.reuse?.core }}</span></p>
-      <p>side core1: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.side_core1)  === 'Successful' ? '#89ce89' : '#db7979'}">{{ detailedLaunch$.reuse?.side_core1 }}</span></p>
-      <p>side core2: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.side_core2)  === 'Successful' ? '#89ce89' : '#db7979'}">{{ detailedLaunch$.reuse?.side_core2 }}</span></p>
-      <p>fairings: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.fairings)  === 'Successful' ? '#89ce89' : '#db7979'}"> {{ detailedLaunch$.reuse?.fairings }}</span></p>
-      <p>capsule: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.capsule)  === 'Successful' ? '#89ce89' : '#db7979'}"> {{ detailedLaunch$.reuse?.capsule }}</span></p>
+      <p>core: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.core)  === 'Successful' ? '#64d164' : '#db4e4e'}">{{ detailedLaunch$.reuse?.core }}</span></p>
+      <p>side core1: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.side_core1)  === 'Successful' ? '#64d164' : '#db4e4e'}">{{ detailedLaunch$.reuse?.side_core1 }}</span></p>
+      <p>side core2: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.side_core2)  === 'Successful' ? '#64d164' : '#db4e4e'}">{{ detailedLaunch$.reuse?.side_core2 }}</span></p>
+      <p>fairings: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.fairings)  === 'Successful' ? '#64d164' : '#db4e4e'}"> {{ detailedLaunch$.reuse?.fairings }}</span></p>
+      <p>capsule: <span [ngStyle]="{'color': checkReuse(detailedLaunch$.reuse?.capsule)  === 'Successful' ? '#64d164' : '#db4e4e'}"> {{ detailedLaunch$.reuse?.capsule }}</span></p>
     </div>
   </div>
 </div>

@@ -6,11 +6,11 @@ import { Launch } from "../launch/launch";
 import { DomSanitizer } from "@angular/platform-browser";
 
 @Component({
-  selector: "app-details",
-  templateUrl: "./details.component.html",
-  styleUrls: ["./details.component.css"]
+  selector: "app-upcoming-details",
+  templateUrl: "./upcoming-details.component.html",
+  styleUrls: ["./upcoming-details.component.css"]
 })
-export class DetailsComponent implements OnInit {
+export class UpcomingDetailsComponent implements OnInit {
   detailedLaunch$: Launch;
 
   constructor(private route: ActivatedRoute, private sanitizer: DomSanitizer) {}
@@ -44,15 +44,15 @@ export class DetailsComponent implements OnInit {
     if(this.detailedLaunch$.links.video_link){
       let videoCode = this.detailedLaunch$.links.video_link;
       videoCode = videoCode.replace("watch?v=", "embed/");
-      console.log("Getting embed url... " + videoCode);
+      console.log("GET EMBED URL" + videoCode);
       return this.sanitizer.bypassSecurityTrustResourceUrl(videoCode);
     }else {
-      console.log("No embed found");
-      return "#";
+      return;
     }
   }
 
   checkSuccess() {
+    debugger;
     if (this.detailedLaunch$.launch_success) {
       return "Successful";
     } else {
@@ -65,6 +65,21 @@ export class DetailsComponent implements OnInit {
       return "Successful";
     } else {
       return "False";
+    }
+  }
+
+  getDate(launch) {
+    let fullDate = launch.launch_date_utc;
+    let splitDate = fullDate.split("T");
+    return splitDate[0];
+  }
+
+  linksExist() {
+    if(this.detailedLaunch$.links.reddit_media || this.detailedLaunch$.links.article_link || this.detailedLaunch$.links.presskit || this.detailedLaunch$.links.wikipedia){
+      return true;
+    }
+    else {
+      return false;
     }
   }
 }

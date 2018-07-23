@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LaunchComponent } from './launch/launch.component';
 import { DetailsComponent } from './details/details.component';
+import { IndividualLaunchResolve } from "./IndividualLaunchResolve";
+import { UpcomingDetailsComponent } from './upcoming-details/upcoming-details.component';
 
 const routes: Routes = [
   {
@@ -10,7 +12,17 @@ const routes: Routes = [
   },
   {
     path: 'launch/:flight_number',
-    component: DetailsComponent
+    component: DetailsComponent,
+    resolve: {
+      individualLaunch: IndividualLaunchResolve,
+    }
+  },
+  {
+    path: 'upcomingLaunch/:flight_number',
+    component: UpcomingDetailsComponent,
+    resolve: {
+      individualLaunch: IndividualLaunchResolve,
+    }
   }
 ];
 

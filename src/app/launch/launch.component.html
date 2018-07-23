@@ -1,31 +1,12 @@
 <div class="container-fluid">
   <div class="row">
-
-
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 left-div">
-      <h2>Launch History:</h2>
-      <hr>
-      <div class="launch-scroller">
-        <ul>
-          <li *ngFor="let launch of launch$">
-            <a routerLink="/launch/{{launch.flight_number}}">Flight #: {{ launch.flight_number }} || {{ launch.mission_name }} || {{ launch.launch_date_utc }}</a>
-          </li>
-        </ul>
-      </div>
-      <div class="spacex-img">
-        <img src="http://res.cloudinary.com/dacxbqrp3/image/upload/v1531417702/SpaceX-Logo.svg_xpoxfj.png" alt="No img">
-      </div>
-    </div>
-
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 right-div">
-      <img src="http://res.cloudinary.com/dacxbqrp3/image/upload/v1531417698/39980-200_kioydl.png" alt="No img">
+    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 left-div default">
+      <img src="http://res.cloudinary.com/dacxbqrp3/image/upload/v1531417798/39980-200_kioydl.png" alt="No img">
       <p class="future-text">Hello
         <span id="blue">Cadets!</span>
       </p>
-
-      <p class="future-text">This project is in no way affiliated with
+      <p class="future-text">This project is not affiliated with official
         <span id="blue">SpaceX</span>.</p>
-
       <p class="future-text">
         <span id="blue">Click</span> on any launch for
         <span id="blue">more</span> details!</p>
@@ -33,7 +14,55 @@
         <a href="https://github.com/r-spacex/SpaceX-API">r/spaceX SpaceX-API</a>
       </p>
     </div>
-
-
+    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 right-div">
+      <h2 class="default">Launch History:</h2>
+      <div class="launch-scroller">
+        <ul>
+          <li *ngFor="let launch of launch$" id="launchlist">
+            <div class="row" id="flightrow">
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <a routerLink="/launch/{{launch.flight_number}}">Flight #: {{ launch.flight_number }}</a>
+              </div>
+              <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="missionNames">
+                <a routerLink="/launch/{{launch.flight_number}}">
+                    {{ launch.mission_name }}
+                </a>
+              </div>
+              <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <a routerLink="/launch/{{launch.flight_number}}" id="dates">
+                  {{ getDate(launch) }}
+                </a>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <h2 class="default">Upcoming Launches:</h2>
+      <div class="upcoming-launch-scroller">
+        <ul>
+          <li *ngFor="let launch of upcomingLaunch$">
+              <div class="row" id="flightrow">
+                  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <a routerLink="/upcomingLaunch/{{launch.flight_number}}">Flight #: {{ launch.flight_number }}</a>
+                  </div>
+                  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" id="missionNames">
+                    <a routerLink="/upcomingLaunch/{{launch.flight_number}}">
+                        {{ launch.mission_name }}
+                    </a>
+                  </div>
+                  <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                    <a routerLink="/upcomingLaunch/{{launch.flight_number}}" id="dates">
+                      {{ getDate(launch) }}
+                    </a>
+                  </div>
+                </div>
+              </li>
+        </ul>
+      </div>
+      <div class="spacex-img">
+        <a href="http://www.spacex.com/" id="spacex-link">
+          <img src="http://res.cloudinary.com/dacxbqrp3/image/upload/v1531417702/SpaceX-Logo.svg_xpoxfj.png" alt="No img" id="logo">
+        </a>
+      </div>
+    </div>
   </div>
-</div>

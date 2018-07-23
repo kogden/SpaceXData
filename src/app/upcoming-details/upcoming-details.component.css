@@ -20,9 +20,8 @@ h2, u, h3 {
 }
 
 .header img {
-  width: 80%;
+  width: 50%;
   min-height: 50%;
-  min-width: 40%;
   -webkit-filter: drop-shadow(5px 5px 5px #222);
   filter: drop-shadow(5px 5px 5px #222);
   margin: 10px;
@@ -156,3 +155,9 @@ iframe {
 #dark {
   color:#545455;
 }
+
+#color {
+  color:orange;
+}
+
+
